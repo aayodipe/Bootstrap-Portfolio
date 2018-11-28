@@ -1,0 +1,30 @@
+
+body{
+     background-color: rgba(182, 177, 177, 0.205);
+}
+.container{
+width:960px;
+
+   
+.bg-yello{
+     background-color: yellow;
+}
+.bg-green{
+     background-color: green;
+}
+.bg-tan{
+     background-color: tan;
+}
+.bg-red{
+     background-color: brown;
+}
+.bg-blue{
+     background-color: blue;
+}
+.bg-gray{
+     background-color: gray;
+}
+.bg-white{
+     background-color: white;
+}
+

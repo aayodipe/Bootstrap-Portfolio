@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="en-gb">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style class="anchorjs"></style><link rel="stylesheet" type="text/css" href="./How to undo (almost) anything with Git _ The GitHub Blog_files/index.css">
+  <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+  <link href="./How to undo (almost) anything with Git _ The GitHub Blog_files/css" rel="stylesheet">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>How to undo (almost) anything with Git | The GitHub Blog</title>
+<meta name="generator" content="Jekyll v3.7.4">
+<meta property="og:title" content="How to undo (almost) anything with Git">
+<meta name="author" content="jaw6">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="One of the most useful features of any version control system is the ability to “undo” your mistakes. In Git, “undo” can mean many slightly different things.">
+<meta property="og:description" content="One of the most useful features of any version control system is the ability to “undo” your mistakes. In Git, “undo” can mean many slightly different things.">
+<link rel="canonical" href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/">
+<meta property="og:url" content="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/">
+<meta property="og:site_name" content="The GitHub Blog">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7321362/26907144-178243fc-4ba6-11e7-8f15-8985451b33c2.jpg">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-06-08T13:44:31+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@github">
+<meta name="twitter:creator" content="@jaw6">
+<script async="" src="./How to undo (almost) anything with Git _ The GitHub Blog_files/analytics.js.download"></script><script type="application/ld+json">
+{"dateModified":"2015-06-08T13:44:31+00:00","datePublished":"2015-06-08T13:44:31+00:00","@type":"BlogPosting","headline":"How to undo (almost) anything with Git","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/"},"url":"https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/","image":"https://user-images.githubusercontent.com/7321362/26907144-178243fc-4ba6-11e7-8f15-8985451b33c2.jpg","author":{"@type":"Person","name":"jaw6"},"description":"One of the most useful features of any version control system is the ability to “undo” your mistakes. In Git, “undo” can mean many slightly different things.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://blog.github.com/feed.xml" title="The GitHub Blog">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3769691-2', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+</head>
+
+  <body class="production">
+    <div class="UnderlineNav UnderlineNav--full bg-gray-dark border-bottom-0 d-none d-md-block">
+  <div id="top-nav-container" class="UnderlineNav-container container-lg px-3">
+    <div class="UnderlineNav-body">
+      <a class="UnderlineNav-item text-white p-0" href="https://github.com/" data-ga-click="Top bar, go to github, text:Back to GitHub.com">Back to GitHub.com</a>
+    </div>
+    <div class="UnderlineNav-actions">
+      <a class="UnderlineNav-item text-white p-0" href="https://help.github.com/" data-ga-click="Top bar, go to support, text:GitHub Support">GitHub Support</a>
+      <a class="UnderlineNav-item text-white mr-0 p-0" href="https://github.com/contact" data-ga-click="Top bar, go to contact, text:Contact GitHub">Contact GitHub</a>
+    </div>
+  </div>
+</div>
+
+
+    <div class="site-header mb-4 mb-md-6">
+  <div class="container-lg d-flex flex-justify-between p-3">
+    <a class="d-flex flex-items-center no-wrap text-gray-dark " href="https://blog.github.com/" title="Home" data-ga-click="Blog, go to blog home">
+      <svg height="32" class="octicon octicon-mark-github mr-2" aria-label="mark-github" viewBox="0 0 16 16" version="1.1" width="32" role="img"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      <span class="f3">The GitHub Blog</span>
+      
+    </a>
+    <button class="d-md-none btn-link link-gray site-header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <svg height="24" class="octicon octicon-three-bars v-align-middle" viewBox="0 0 12 16" version="1.1" width="18" aria-hidden="true"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
+    </button>
+  </div>
+
+  <nav class="site-header-nav d-none bg-gray-light">
+    <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/" data-ga-click="Blog, go to Featured, text:Featured">Featured</a>
+
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/all/" data-ga-click="Blog, go to All Posts, text:All Posts">All Posts</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/announcements/" data-ga-click="Blog, go to Announcements, text:Announcements">Announcements</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/business/" data-ga-click="Blog, go to Business, text:Business">Business</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/community/" data-ga-click="Blog, go to Community, text:Community">Community</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/data/" data-ga-click="Blog, go to Data, text:Data">Data</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/editor-tools/" data-ga-click="Blog, go to Editor Tools, text:Editor Tools">Editor Tools</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/education/" data-ga-click="Blog, go to Education, text:Education">Education</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/engineering/" data-ga-click="Blog, go to Engineering, text:Engineering">Engineering</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/events/" data-ga-click="Blog, go to Events, text:Events">Events</a>
+    
+      
+      <a class="d-block py-2 px-3 border-top text-gray-dark " href="https://blog.github.com/category/policy/" data-ga-click="Blog, go to Policy, text:Policy">Policy</a>
+    
+
+    <a href="https://blog.github.com/changelog" class="d-block py-2 px-3 border-top link-gray no-underline" data-ga-click="Changelog, go to changelog, text:Changelog">
+      <svg height="16" class="octicon octicon-clock text-blue" aria-label="clock" viewBox="0 0 14 16" version="1.1" width="14" role="img"><path fill-rule="evenodd" d="M8 8h3v2H7c-.55 0-1-.45-1-1V4h2v4zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+      Changelog
+    </a>
+  </nav>
+</div>
+
+
+    <div class="container-lg px-3 d-flex">
+  <div class="col-12 col-md-8">
+    <h1 class="lh-condensed">
+  How to undo (almost) anything with Git
+</h1>
+
+<ul class="d-flex flex-wrap mt-1 mb-2 list-style-none text-gray">
+  <li class="my-1 mr-4 no-wrap">
+    <svg height="16" class="octicon octicon-calendar mr-1" aria-label="calendar" viewBox="0 0 14 16" version="1.1" width="14" role="img"><path fill-rule="evenodd" d="M13 2h-1v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H6v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H2c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 12H2V5h11v9zM5 3H4V1h1v2zm6 0h-1V1h1v2zM6 7H5V6h1v1zm2 0H7V6h1v1zm2 0H9V6h1v1zm2 0h-1V6h1v1zM4 9H3V8h1v1zm2 0H5V8h1v1zm2 0H7V8h1v1zm2 0H9V8h1v1zm2 0h-1V8h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1zm2 0h-1v-1h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1z"></path></svg>
+    Jun 08, 2015
+  </li>
+  
+  <li class="my-1 mr-4 no-wrap">
+    <a class="d-flex flex-items-center text-gray no-underline" href="https://github.com/jaw6" data-ga-click="User, click, text:jaw6">
+      <span class="d-inline-block v-align-middle overflow-hidden mr-1 rounded-1" style="width: 20px; height: 20px;"><img class="avatar avatar-small" alt="jaw6" width="20" height="20" data-proofer-ignore="true" src="./How to undo (almost) anything with Git _ The GitHub Blog_files/jaw6" srcset="https://avatars3.githubusercontent.com/jaw6?v=3&amp;s=20 1x, https://avatars3.githubusercontent.com/jaw6?v=3&amp;s=40 2x, https://avatars3.githubusercontent.com/jaw6?v=3&amp;s=60 3x, https://avatars3.githubusercontent.com/jaw6?v=3&amp;s=80 4x"></span>
+      <span>jaw6</span>
+    </a>
+  </li>
+  
+  
+    
+    
+  
+  
+</ul>
+
+<div class="content markdown-body">
+  <p>One of the most useful features of any version control system is the ability to “undo” your mistakes. In Git, “undo” can mean many slightly different things.</p>
+
+<p>When you make a new commit, Git stores a snapshot of your repository at that specific moment in time; later, you can use Git to go back to an earlier version of your project.</p>
+
+<p>In this post, I’m going to take a look at some common scenarios where you might want to “undo” a change you’ve made and the best way to do it using Git.</p>
+
+<h2 id="undo-a-public-change">Undo a “public” change<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#undo-a-public-change" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You just ran <code class="highlighter-rouge">git push</code>, sending your changes to GitHub, now you realize there’s a problem with one of those commits. You’d like to undo that commit.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git revert &lt;SHA&gt;</code></p>
+
+<p><strong>What’s happening:</strong> <code class="highlighter-rouge">git revert</code> will create a new commit that’s the opposite (or inverse) of the given SHA. If the old commit is “matter”, the new commit is “anti-matter”—anything removed in the old commit will be added in the new commit and anything added in the old commit will be removed in the new commit.</p>
+
+<p>This is Git’s safest, most basic “undo” scenario, because it doesn’t <em>alter</em> history—so you can now <code class="highlighter-rouge">git push</code> the new “inverse” commit to undo your mistaken commit.</p>
+
+<h2 id="fix-the-last-commit-message">Fix the last commit message<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#fix-the-last-commit-message" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You just typo’d the last commit message, you did <code class="highlighter-rouge">git commit -m "Fxies bug #42"</code> but before <code class="highlighter-rouge">git push</code> you realized that really should say “Fixes bug #42”.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git commit --amend</code> or <code class="highlighter-rouge">git commit --amend -m "Fixes bug #42"</code></p>
+
+<p><strong>What’s happening:</strong> <code class="highlighter-rouge">git commit --amend</code> will update and replace the most recent commit with a new commit that combines any staged changes with the contents of the previous commit. With nothing currently staged, this just rewrites the previous commit message.</p>
+
+<h2 id="undo-local-changes">Undo “local” changes<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#undo-local-changes" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> The cat walked across the keyboard and somehow saved the changes, then crashed the editor. You haven’t committed those changes, though. You want to undo everything in that file—just go back to the way it looked in the last commit.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git checkout -- &lt;bad filename&gt;</code></p>
+
+<p><strong>What’s happening:</strong> <code class="highlighter-rouge">git checkout</code> alters files in the working directory to a state previously known to Git. You could provide a branch name or specific SHA you want to go back to or, by default, Git will assume you want to checkout <code class="highlighter-rouge">HEAD</code>, the last commit on the currently-checked-out branch.</p>
+
+<p>Keep in mind: any changes you “undo” this way are <em>really</em> gone. They were never committed, so Git can’t help us recover them later. Be sure you know what you’re throwing away here! (Maybe use <code class="highlighter-rouge">git diff</code> to confirm.)</p>
+
+<h2 id="reset-local-changes">Reset “local” changes<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#reset-local-changes" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You’ve made some commits locally (not yet pushed), but everything is terrible, you want to undo the last three commits—like they never happened.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git reset &lt;last good SHA&gt;</code> or <code class="highlighter-rouge">git reset --hard &lt;last good SHA&gt;</code></p>
+
+<p><strong>What’s happening:</strong> <code class="highlighter-rouge">git reset</code> rewinds your repository’s history all the way back to the specified SHA. It’s as if those commits never happened. By default, <code class="highlighter-rouge">git reset</code> preserves the working directory. The commits are gone, but the <em>contents</em> are still on disk. This is the safest option, but often, you’ll want to “undo” the commits <em>and</em> the changes in one move—that’s what <code class="highlighter-rouge">--hard</code> does.</p>
+
+<h2 id="redo-after-undo-local">Redo after undo “local”<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#redo-after-undo-local" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You made some commits, did a <code class="highlighter-rouge">git reset --hard</code> to “undo” those changes (see above), and <em>then</em> realized: you want those changes back!</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git reflog</code> and <code class="highlighter-rouge">git reset</code> or <code class="highlighter-rouge">git checkout</code></p>
+
+<p><strong>What’s happening:</strong> <code class="highlighter-rouge">git reflog</code> is an amazing resource for recovering project history. You can recover <em>almost</em> anything—anything you’ve committed—via the reflog.</p>
+
+<p>You’re probably familiar with the <code class="highlighter-rouge">git log</code> command, which shows a list of commits. <code class="highlighter-rouge">git reflog</code> is similar, but instead shows a list of times when <code class="highlighter-rouge">HEAD</code> changed.</p>
+
+<p>Some caveats:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">HEAD</code> changes <em>only</em>.<code class="highlighter-rouge">HEAD</code> changes when you switch branches, make commits with <code class="highlighter-rouge">git commit</code> and un-make commits with <code class="highlighter-rouge">git reset</code>, but <code class="highlighter-rouge">HEAD</code> does <em>not</em> change when you <code class="highlighter-rouge">git checkout -- &lt;bad filename&gt;</code> (from an earlier scenario—as mentioned before, those changes were never committed, so the reflog can’t help us recover those.</li>
+  <li>
+<code class="highlighter-rouge">git reflog</code> doesn’t last forever. Git will periodically clean up objects which are “unreachable.” Don’t expect to find months-old commits lying around in the reflog forever.</li>
+  <li>Your <code class="highlighter-rouge">reflog</code> is yours and yours alone. You can’t use <code class="highlighter-rouge">git reflog</code> to restore another developer’s un-pushed commits.</li>
+</ul>
+
+<p><img src="./How to undo (almost) anything with Git _ The GitHub Blog_files/f6b9f054-d891-11e4-8c53-838eff9f40ae.png" alt="reflog"></p>
+
+<p>So… how do you use the reflog to “redo” a previously “undone” commit or commits? It depends on what exactly you want to accomplish:</p>
+<ul>
+  <li>If you want to restore the project’s history as it was at that moment in time use <code class="highlighter-rouge">git reset --hard &lt;SHA&gt;</code>
+</li>
+  <li>If you want to recreate one or more files in your working directory as they were at that moment in time, without altering history use <code class="highlighter-rouge">git checkout &lt;SHA&gt; -- &lt;filename&gt;</code>
+</li>
+  <li>If you want to replay <em>exactly one</em> of those commits into your repository use <code class="highlighter-rouge">git cherry-pick &lt;SHA&gt;</code>
+</li>
+</ul>
+
+<h2 id="once-more-with-branching">Once more, with branching<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#once-more-with-branching" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You made some commits, then realized you were checked out on <code class="highlighter-rouge">master</code>. You wish you could make those commits on a feature branch instead.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git branch feature</code>, <code class="highlighter-rouge">git reset --hard origin/master</code>, and <code class="highlighter-rouge">git checkout feature</code></p>
+
+<p><strong>What’s happening:</strong> You may be used to creating new branches with <code class="highlighter-rouge">git checkout -b &lt;name&gt;</code>—it’s a popular short-cut for creating a new branch and checking it out right away—but you don’t want to switch branches just yet. Here, <code class="highlighter-rouge">git branch feature</code> creates a new branch called <code class="highlighter-rouge">feature</code> pointing at your most recent commit, but leaves you checked out to <code class="highlighter-rouge">master</code>.</p>
+
+<p>Next, <code class="highlighter-rouge">git reset --hard</code> rewinds <code class="highlighter-rouge">master</code> back to <code class="highlighter-rouge">origin/master</code>, before any of your new commits. Don’t worry, though, they are still available on <code class="highlighter-rouge">feature</code>.</p>
+
+<p>Finally, <code class="highlighter-rouge">git checkout</code> switches to the new <code class="highlighter-rouge">feature</code> branch, with all of your recent work intact.</p>
+
+<h2 id="branch-in-time-saves-nine">Branch in time saves nine<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#branch-in-time-saves-nine" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You started a new branch <code class="highlighter-rouge">feature</code> based on <code class="highlighter-rouge">master</code>, but <code class="highlighter-rouge">master</code> was pretty far behind <code class="highlighter-rouge">origin/master</code>. Now that <code class="highlighter-rouge">master</code> branch is in sync with <code class="highlighter-rouge">origin/master</code>, you wish commits on <code class="highlighter-rouge">feature</code> were starting <em>now</em>, instead of being so far behind.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git checkout feature</code> and <code class="highlighter-rouge">git rebase master</code></p>
+
+<p><strong>What’s happening:</strong> You could have done this with <code class="highlighter-rouge">git reset</code> (no <code class="highlighter-rouge">--hard</code>, intentionally preserving changes on disk) then <code class="highlighter-rouge">git checkout -b &lt;new branch name&gt;</code> and then re-commit the changes, but that way, you’d lose the commit history. There’s a better way.</p>
+
+<p><code class="highlighter-rouge">git rebase master</code> does a couple of things:</p>
+<ul>
+  <li>First it locates the common ancestor between your currently-checked-out branch and <code class="highlighter-rouge">master</code>.</li>
+  <li>Then it resets the currently-checked-out branch to that ancestor, holding all later commits in a temporary holding area.</li>
+  <li>Then it advances the currently-checked-out-branch to the end of <code class="highlighter-rouge">master</code> and replays the commits from the holding area <em>after</em> <code class="highlighter-rouge">master</code>’s last commit.</li>
+</ul>
+
+<h2 id="mass-undoredo">Mass undo/redo<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#mass-undoredo" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You started this feature in one direction, but mid-way through, you realized another solution was better. You’ve got a dozen or so commits, but you only want some of them. You’d like the others to just disappear.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git rebase -i &lt;earlier SHA&gt;</code></p>
+
+<p><strong>What’s happening:</strong> <code class="highlighter-rouge">-i</code> puts <code class="highlighter-rouge">rebase</code> in “interactive mode”. It starts off like the rebase discussed above, but before replaying any commits, it pauses and allows you to gently modify each commit as it’s replayed.</p>
+
+<p><code class="highlighter-rouge">rebase -i</code> will open in your default text editor, with a list of commits being applied, like this:</p>
+
+<p><img src="./How to undo (almost) anything with Git _ The GitHub Blog_files/f6b1ab88-d891-11e4-97c1-e0630ac74e74.png" alt="rebase-interactive1"></p>
+
+<p>The first two columns are key: the first is the selected command for the commit identified by the SHA in the second column. By default, <code class="highlighter-rouge">rebase -i</code> assumes each commit is being applied, via the <code class="highlighter-rouge">pick</code> command.</p>
+
+<p>To drop a commit, just delete that line in your editor. If you no longer want the bad commits in your project, you can delete lines 1 and 3-4 above.</p>
+
+<p>If you want to preserve the <em>contents</em> of the commit but edit the commit <em>message</em>, you use the <code class="highlighter-rouge">reword</code> command. Just replace the word <code class="highlighter-rouge">pick</code> in the first column with the word <code class="highlighter-rouge">reword</code> (or just <code class="highlighter-rouge">r</code>). It can be tempting to rewrite the commit message right now, but that won’t work—<code class="highlighter-rouge">rebase -i</code> ignores everything after the SHA column. The text after that is really just to help us remember what <code class="highlighter-rouge">0835fe2</code> is all about. When you’ve finished with <code class="highlighter-rouge">rebase -i</code>, you’ll be prompted for any new commit messages you need to write.</p>
+
+<p>If you want to combine two commits together, you can use the <code class="highlighter-rouge">squash</code> or <code class="highlighter-rouge">fixup</code> commands, like this:</p>
+
+<p><img src="./How to undo (almost) anything with Git _ The GitHub Blog_files/f6b605ca-d891-11e4-98cf-d567ca9f4edc.png" alt="rebase-interactive2"></p>
+
+<p><code class="highlighter-rouge">squash</code> and <code class="highlighter-rouge">fixup</code> combine “up”—the commit with the “combine” command will be merged into the commit immediately before it. In this scenario, <code class="highlighter-rouge">0835fe2</code> and <code class="highlighter-rouge">6943e85</code> will be combined into one commit, then <code class="highlighter-rouge">38f5e4e</code> and <code class="highlighter-rouge">af67f82</code> will be combined together into another.</p>
+
+<p>When you select <code class="highlighter-rouge">squash</code>, Git will prompt us to give the new, combined commit a new commit message; <code class="highlighter-rouge">fixup</code> will give the new commit the message from the first commit in the list. Here, you know that <code class="highlighter-rouge">af67f82</code> is an “ooops” commit, so you’ll just use the commit message from <code class="highlighter-rouge">38f5e4e</code> as is, but you’ll write a new message for the new commit you get from combining <code class="highlighter-rouge">0835fe2</code> and <code class="highlighter-rouge">6943e85</code>.</p>
+
+<p>When you save and exit your editor, Git will apply your commits in order from top to bottom. You can alter the order commits apply by changing the order of commits before saving. If you’d wanted, you could have combined <code class="highlighter-rouge">af67f82</code> with <code class="highlighter-rouge">0835fe2</code> by arranging things like this:</p>
+
+<p><img src="./How to undo (almost) anything with Git _ The GitHub Blog_files/f6b4a9d2-d891-11e4-9ac9-10039c031d06.png" alt="rebase-interactive3"></p>
+
+<h2 id="fix-an-earlier-commit">Fix an earlier commit<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#fix-an-earlier-commit" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You failed to include a file in an earlier commit, it’d be great if that earlier commit could somehow include the stuff you left out. You haven’t pushed, yet, but it wasn’t the most recent commit, so you can’t use <code class="highlighter-rouge">commit --amend</code>.</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git commit --squash &lt;SHA of the earlier commit&gt;</code> and <code class="highlighter-rouge">git rebase --autosquash -i &lt;even earlier SHA&gt;</code></p>
+
+<p><strong>What’s happening:</strong> <code class="highlighter-rouge">git commit --squash</code> will create a new commit with a commit message like <code class="highlighter-rouge">squash! Earlier commit</code>. (You could manually create a commit with a message like that, but <code class="highlighter-rouge">commit --squash</code> saves you some typing.)</p>
+
+<p>You can also use <code class="highlighter-rouge">git commit --fixup</code> if you don’t want to be prompted to write a new commit message for the combined commit. In this scenario, you’d probably use <code class="highlighter-rouge">commit --fixup</code>, since you just want to use the earlier commit’s commit message during <code class="highlighter-rouge">rebase</code>.</p>
+
+<p><code class="highlighter-rouge">rebase --autosquash -i</code> will launch an interactive <code class="highlighter-rouge">rebase</code> editor, but the editor will open with any <code class="highlighter-rouge">squash!</code> and <code class="highlighter-rouge">fixup!</code> commits already paired to the commit target in the list of commits, like so:</p>
+
+<p><img src="./How to undo (almost) anything with Git _ The GitHub Blog_files/f6a7a1d8-d891-11e4-8784-c32262ff54da.png" alt="rebase-autosquash"></p>
+
+<p>When using <code class="highlighter-rouge">--squash</code> and <code class="highlighter-rouge">--fixup</code>, you might not remember the SHA of the commit you want to fix—only that it was one or five commits ago. You might find using Git’s <code class="highlighter-rouge">^</code> and <code class="highlighter-rouge">~</code> operators especially handy. <code class="highlighter-rouge">HEAD^</code> is one commit before <code class="highlighter-rouge">HEAD</code>. <code class="highlighter-rouge">HEAD~4</code> is four commits before <code class="highlighter-rouge">HEAD</code> - or, altogether, five commits back.</p>
+
+<h2 id="stop-tracking-a-tracked-file">Stop tracking a tracked file<a class="anchorjs-link " href="https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/#stop-tracking-a-tracked-file" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></h2>
+
+<p><strong>Scenario:</strong> You accidentally added <code class="highlighter-rouge">application.log</code> to the repository, now every time you run the application, Git reports there are unstaged changes in <code class="highlighter-rouge">application.log</code>. You put <code class="highlighter-rouge">*.log</code> in the <code class="highlighter-rouge">.gitignore</code> file, but it’s still there—how do you tell git to to “undo” tracking changes in this file?</p>
+
+<p><strong>Undo with:</strong> <code class="highlighter-rouge">git rm --cached application.log</code></p>
+
+<p><strong>What’s happening:</strong> While <code class="highlighter-rouge">.gitignore</code> prevents Git from tracking changes to files or even noticing the existence of files it’s never tracked before, once a file has been added and committed, Git will continue noticing changes in that file. Similarly, if you’ve used <code class="highlighter-rouge">git add -f</code> to “force”, or override, <code class="highlighter-rouge">.gitignore</code>, Git will keep tracking changes. You won’t have to use <code class="highlighter-rouge">-f</code> to add it in the future.</p>
+
+<p>If you want to remove that should-be-ignored file from Git’s tracking, <code class="highlighter-rouge">git rm --cached</code> will remove it from tracking but leave the file untouched on disk. Since it’s now being ignored, you won’t see that file in <code class="highlighter-rouge">git status</code> or accidentally commit changes from that file again.</p>
+
+<hr>
+
+<p>That’s how to undo anything with Git. To learn more about any of the Git commands used here, check out the relevant documentation:</p>
+<ul>
+  <li><a href="http://git-scm.com/docs/git-checkout">checkout</a></li>
+  <li><a href="http://git-scm.com/docs/git-commit">commit</a></li>
+  <li><a href="http://git-scm.com/docs/git-rebase">rebase</a></li>
+  <li><a href="http://git-scm.com/docs/git-reflog">reflog</a></li>
+  <li><a href="http://git-scm.com/docs/git-reset">reset</a></li>
+  <li><a href="http://git-scm.com/docs/git-revert">revert</a></li>
+  <li><a href="http://git-scm.com/docs/git-rm">rm</a></li>
+</ul>
+
+</div>
+
+<div class="my-6 bg-gray-light border rounded-1 box-shadow">
+  <strong class="d-flex flex-justify-between flex-items-center py-2 px-3 border-bottom">
+    <span>Have feedback on this post? Let <a href="https://twitter.com/github">@github</a> know on Twitter.</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 335 276" fill="#3ba9ee" width="24" height="24">
+      <path d="m302 70a195 195 0 0 1 -299 175 142 142 0 0 0 97 -30 70 70 0 0 1 -58 -47 70 70 0 0 0 31 -2 70 70 0 0 1 -57 -66 70 70 0 0 0 28 5 70 70 0 0 1 -18 -90 195 195 0 0 0 141 72 67 67 0 0 1 116 -62 117 117 0 0 0 43 -17 65 65 0 0 1 -31 38 117 117 0 0 0 39 -11 65 65 0 0 1 -32 35"></path>
+    </svg>
+  </strong>
+  <div class="py-2 px-3">
+    Need help or found a bug? <a href="https://github.com/contact">Contact us.</a>
+  </div>
+</div>
+
+  </div>
+  <div class="d-none d-md-block col-md-3 offset-md-1">
+    
+<nav class="menu">
+  <a class="menu-item" href="https://blog.github.com/" data-ga-click="Blog nav, go to Featured, text:Featured">
+    Featured
+  </a>
+
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/all/" data-ga-click="Blog, go to All Posts, text:All Posts">
+      All Posts
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/announcements/" data-ga-click="Blog, go to Announcements, text:Announcements">
+      Announcements
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/business/" data-ga-click="Blog, go to Business, text:Business">
+      Business
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/community/" data-ga-click="Blog, go to Community, text:Community">
+      Community
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/data/" data-ga-click="Blog, go to Data, text:Data">
+      Data
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/editor-tools/" data-ga-click="Blog, go to Editor Tools, text:Editor Tools">
+      Editor Tools
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/education/" data-ga-click="Blog, go to Education, text:Education">
+      Education
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/engineering/" data-ga-click="Blog, go to Engineering, text:Engineering">
+      Engineering
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/events/" data-ga-click="Blog, go to Events, text:Events">
+      Events
+    </a>
+  
+    
+
+    <a class="menu-item " href="https://blog.github.com/category/policy/" data-ga-click="Blog, go to Policy, text:Policy">
+      Policy
+    </a>
+  
+</nav>
+
+
+<p class="mt-4 mb-3">
+  <a href="https://blog.github.com/changelog" class="link-gray no-underline" data-ga-click="Changelog, go to changelog, text:Changelog">
+    <svg height="16" class="octicon octicon-clock text-blue" aria-label="clock" viewBox="0 0 14 16" version="1.1" width="14" role="img"><path fill-rule="evenodd" d="M8 8h3v2H7c-.55 0-1-.45-1-1V4h2v4zM7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7z"></path></svg>
+    Changelog
+  </a>
+</p>
+
+<p class="my-3">
+  
+
+  
+  <a href="https://blog.github.com/subscribe" class="link-gray no-underline" data-ga-click="Blog, go to subscribe, text:Subscribe">
+    <svg width="12" class="octicon octicon-rss text-orange" aria-label="rss" viewBox="0 0 10 16" version="1.1" height="19" role="img"><path fill-rule="evenodd" d="M2 13H0v-2c1.11 0 2 .89 2 2zM0 3v1a9 9 0 0 1 9 9h1C10 7.48 5.52 3 0 3zm0 4v1c2.75 0 5 2.25 5 5h1c0-3.31-2.69-6-6-6z"></path></svg>
+    Subscribe
+  </a>
+</p>
+
+<a href="https://github.com/marketplace/free-trials" class="d-block py-3 px-4 mt-3 text-center no-underline border rounded-2" data-ga-click="Marketplace, go to Marketplace, text:Try Marketplace apps free">
+  <svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" class="mt-1 mb-2"><g stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g stroke="#2088FF"><path d="M44.5 32C50.851 32 56 37.149 56 43.5S50.851 55 44.5 55 33 49.851 33 43.5 38.149 32 44.5 32zM33.828 38.778L31 35.95 35.95 31l2.454 2.454M44 37v7M49 44h-5"></path></g><g stroke="#79B8FF"><path d="M32.01 53H3.5A2.5 2.5 0 0 1 1 50.5v-47A2.5 2.5 0 0 1 3.5 1h38a2.5 2.5 0 0 1 2.449 1.994M44 21.116v6.972"></path><path d="M28 48H6v-7h21.97M18 35h9"></path></g><path d="M31 22.045V27a1 1 0 0 1-1 1H15a1 1 0 0 1-1-1v-4.922" stroke="#79B8FF"></path><g stroke="#2088FF"><path d="M54.92 14.972L44 6H6M10.698 14.064c.828.709 1.595 1.354 2.302 1.936 1.569 1.333 2.902 2 4 2 1.722 0 3.191-.865 3.899-1.85.036-.05.169-.275.2-.325M23.725 17.246a4.298 4.298 0 0 0 5.43-2.267M32.313 17.246a4.299 4.299 0 0 0 5.43-2.267M40.9 17.246a4.298 4.298 0 0 0 5.43-2.267M49.486 17.246a4.298 4.298 0 0 0 5.43-2.267M29.155 14.98l-5.43-4.672M21.15 15.693l-6.06-5.385M37.742 14.98l-5.43-4.672M46.33 14.98l-5.43-4.672"></path></g></g></svg>
+  <h4 class="text-gray-dark mb-1 lh-condensed no-underline">Discover new ways to build better</h4>
+  <p class="text-gray mb-3">Try Marketplace apps free for 14 days</p>
+  <span class="btn btn-outline mb-2">Learn more</span>
+</a>
+
+  </div>
+</div>
+
+
+    <div class="footer mt-6 pt-md-6 border-top" role="contentinfo">
+  <div class="container-lg p-responsive">
+    <div class="d-flex flex-wrap py-5 mb-5">
+      <div class="col-12 col-lg-4 mb-5">
+        <a href="https://github.com/" data-ga-click="Footer, go to GitHub, text:GitHub" class="text-gray-dark">
+          <svg height="30" class="octicon octicon-logo-github" aria-label="github-logo" viewBox="0 0 45 16" version="1.1" width="84" role="img"><path fill-rule="evenodd" d="M18.53 12.03h-.02c.009 0 .015.01.024.011h.006l-.01-.01zm.004.011c-.093.001-.327.05-.574.05-.78 0-1.05-.36-1.05-.83V8.13h1.59c.09 0 .16-.08.16-.19v-1.7c0-.09-.08-.17-.16-.17h-1.59V3.96c0-.08-.05-.13-.14-.13h-2.16c-.09 0-.14.05-.14.13v2.17s-1.09.27-1.16.28c-.08.02-.13.09-.13.17v1.36c0 .11.08.19.17.19h1.11v3.28c0 2.44 1.7 2.69 2.86 2.69.53 0 1.17-.17 1.27-.22.06-.02.09-.09.09-.16v-1.5a.177.177 0 0 0-.146-.18zm23.696-2.2c0-1.81-.73-2.05-1.5-1.97-.6.04-1.08.34-1.08.34v3.52s.49.34 1.22.36c1.03.03 1.36-.34 1.36-2.25zm2.43-.16c0 3.43-1.11 4.41-3.05 4.41-1.64 0-2.52-.83-2.52-.83s-.04.46-.09.52c-.03.06-.08.08-.14.08h-1.48c-.1 0-.19-.08-.19-.17l.02-11.11c0-.09.08-.17.17-.17h2.13c.09 0 .17.08.17.17v3.77s.82-.53 2.02-.53l-.01-.02c1.2 0 2.97.45 2.97 3.88zm-8.72-3.61H33.84c-.11 0-.17.08-.17.19v5.44s-.55.39-1.3.39-.97-.34-.97-1.09V6.25c0-.09-.08-.17-.17-.17h-2.14c-.09 0-.17.08-.17.17v5.11c0 2.2 1.23 2.75 2.92 2.75 1.39 0 2.52-.77 2.52-.77s.05.39.08.45c.02.05.09.09.16.09h1.34c.11 0 .17-.08.17-.17l.02-7.47c0-.09-.08-.17-.19-.17zm-23.7-.01h-2.13c-.09 0-.17.09-.17.2v7.34c0 .2.13.27.3.27h1.92c.2 0 .25-.09.25-.27V6.23c0-.09-.08-.17-.17-.17zm-1.05-3.38c-.77 0-1.38.61-1.38 1.38 0 .77.61 1.38 1.38 1.38.75 0 1.36-.61 1.36-1.38 0-.77-.61-1.38-1.36-1.38zm16.49-.25h-2.11c-.09 0-.17.08-.17.17v4.09h-3.31V2.6c0-.09-.08-.17-.17-.17h-2.13c-.09 0-.17.08-.17.17v11.11c0 .09.09.17.17.17h2.13c.09 0 .17-.08.17-.17V8.96h3.31l-.02 4.75c0 .09.08.17.17.17h2.13c.09 0 .17-.08.17-.17V2.6c0-.09-.08-.17-.17-.17zM8.81 7.35v5.74c0 .04-.01.11-.06.13 0 0-1.25.89-3.31.89-2.49 0-5.44-.78-5.44-5.92S2.58 1.99 5.1 2c2.18 0 3.06.49 3.2.58.04.05.06.09.06.14L7.94 4.5c0 .09-.09.2-.2.17-.36-.11-.9-.33-2.17-.33-1.47 0-3.05.42-3.05 3.73s1.5 3.7 2.58 3.7c.92 0 1.25-.11 1.25-.11v-2.3H4.88c-.11 0-.19-.08-.19-.17V7.35c0-.09.08-.17.19-.17h3.74c.11 0 .19.08.19.17z"></path></svg>
+        </a>
+      </div>
+      <div class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-lg-0 pl-lg-4">
+        <h4 class="mb-3 text-mono text-gray-light text-normal">Product</h4>
+        <ul class="list-style-none text-gray f5">
+          <li class="lh-condensed mb-3"><a href="https://github.com/features" data-ga-click="Footer, go to features, text:features" class="link-gray">Features</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security" class="link-gray">Security</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.com/business" data-ga-click="Footer, go to business, text:business" class="link-gray">Business</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.com/business/customers" data-ga-click="Footer, go to case studies, text:case studies" class="link-gray">Case studies</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.com/pricing" data-ga-click="Footer, go to pricing, text:pricing" class="link-gray">Pricing</a></li>
+          <li class="lh-condensed mb-3"><a href="https://resources.github.com/" data-ga-click="Footer, go to resources, text:resources" class="link-gray">Resources</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-md-0 pl-md-4">
+        <h4 class="mb-3 text-mono text-gray-light text-normal">Platform</h4>
+        <ul class="list-style-none f5">
+          <li class="lh-condensed mb-3"><a href="http://developer.github.com/" data-ga-click="Footer, go to api, text:api" class="link-gray">Developer API</a></li>
+          <li class="lh-condensed mb-3"><a href="http://partner.github.com/" data-ga-click="Footer, go to partner, text:partner" class="link-gray ">Partners</a></li>
+          <li class="lh-condensed mb-3"><a href="https://atom.io/" data-ga-click="Footer, go to atom, text:atom" class="link-gray ">Atom</a></li>
+          <li class="lh-condensed mb-3"><a href="http://electron.atom.io/" data-ga-click="Footer, go to electron, text:electron" class="link-gray ">Electron</a></li>
+          <li class="lh-condensed mb-3"><a href="https://desktop.github.com/" data-ga-click="Footer, go to desktop, text:desktop" class="link-gray ">GitHub Desktop</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-md-0 pl-md-4">
+        <h4 class="mb-3 text-mono text-gray-light text-normal">Support</h4>
+        <ul class="list-style-none f5">
+          <li class="lh-condensed mb-3"><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help" class="link-gray">Help</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.community/" data-ga-click="Footer, go to community, text:community" class="link-gray">Community Forum</a></li>
+          <li class="lh-condensed mb-3"><a href="https://services.github.com/" data-ga-click="Footer, go to training, text:training" class="link-gray">Training</a></li>
+          <li class="lh-condensed mb-3"><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status" class="link-gray ">Status</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact" class="link-gray ">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-sm-3 col-lg-2 mb-6 mb-md-2 pr-3 pr-md-0 pl-md-4">
+        <h4 class="mb-3 text-mono text-gray-light text-normal">Company</h4>
+        <ul class="list-style-none f5">
+          <li class="lh-condensed mb-3"><a href="https://github.com/about/press" data-ga-click="Footer, go to press, text:press" class="link-gray">About</a></li>
+          <li class="lh-condensed mb-3"><a href="https://blog.github.com/" data-ga-click="Footer, go to blog, text:blog" class="link-gray ">Blog</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.com/about/careers" data-ga-click="Footer, go to careers, text:careers" class="link-gray">Careers</a></li>
+          <li class="lh-condensed mb-3"><a href="https://github.com/about/press" data-ga-click="Footer, go to press, text:press" class="link-gray">Press</a></li>
+          <li class="lh-condensed mb-3"><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop" class="link-gray">Shop</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="bg-gray-light">
+    <div class="container-lg p-responsive f6 py-4 d-sm-flex flex-justify-between flex-row-reverse flex-items-center">
+      <ul class="list-style-none d-flex flex-items-center mb-3 mb-sm-0 lh-condensed-ultra">
+        <li class="mr-3">
+<a href="https://twitter.com/github" data-ga-click="Footer, go to Twitter, text:twitter" style="color: #959da5;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.5 222.3" class="d-block" height="18">
+          <g fill="currentColor">
+            <path d="M273.5,26.3a109.77,109.77,0,0,1-32.2,8.8A56.07,56.07,0,0,0,266,4.1a113.39,113.39,0,0,1-35.7,13.6,56.1,56.1,0,0,0-97,38.4,54,54,0,0,0,1.5,12.8A159.68,159.68,0,0,1,19.1,10.3,56.12,56.12,0,0,0,36.5,85.2a56.06,56.06,0,0,1-25.4-7v.7a56.11,56.11,0,0,0,45,55,55.65,55.65,0,0,1-14.8,2,62.39,62.39,0,0,1-10.6-1,56.24,56.24,0,0,0,52.4,39,112.87,112.87,0,0,1-69.7,24A119,119,0,0,1,0,197.1a158.83,158.83,0,0,0,86,25.2c103.2,0,159.6-85.5,159.6-159.6,0-2.4-.1-4.9-.2-7.3a114.25,114.25,0,0,0,28.1-29.1"></path>
+          </g>
+        </svg>
+        </a>
+        </li>
+        <li class="mr-3">
+          <a href="https://www.facebook.com/GitHub" data-ga-click="Footer, go to Facebook, text:facebook" style="color: #959da5;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.3 15.4" class="d-block" height="18">
+            <g fill="currentColor">
+              <path d="M14.5,0H.8A.88.88,0,0,0,0,.9V14.5a.88.88,0,0,0,.8.9H8.1v-6h-2V7.1h2V5.4a2.87,2.87,0,0,1,2.5-3.1h.5a10.87,10.87,0,0,1,1.8.1V4.5H11.6c-1,0-1.1.5-1.1,1.1V7.1h2.3l-.3,2.3h-2v5.9h3.9a.88.88,0,0,0,.9-.8h0V.8A.86.86,0,0,0,14.5,0Z"></path>
+            </g>
+          </svg>
+          </a>
+        </li>
+        <li class="mr-3">
+          <a href="https://www.youtube.com/github" data-ga-click="Footer, go to YouTube, text:youtube" style="color: #959da5;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.17 13.6" class="d-block" height="16">
+            <g fill="currentColor">
+              <path d="M18.77,2.13A2.4,2.4,0,0,0,17.09.42C15.59,0,9.58,0,9.58,0a57.55,57.55,0,0,0-7.5.4A2.49,2.49,0,0,0,.39,2.13,26.27,26.27,0,0,0,0,6.8a26.15,26.15,0,0,0,.39,4.67,2.43,2.43,0,0,0,1.69,1.71c1.52.42,7.5.42,7.5.42a57.69,57.69,0,0,0,7.51-.4,2.4,2.4,0,0,0,1.68-1.71,25.63,25.63,0,0,0,.4-4.67A24,24,0,0,0,18.77,2.13ZM7.67,9.71V3.89l5,2.91Z"></path>
+            </g>
+          </svg>
+          </a>
+        </li>
+        <li class="mr-3 flex-self-start">
+          <a href="https://www.linkedin.com/company/github" data-ga-click="Footer, go to Linkedin, text:linkedin" style="color: #959da5;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 18" class="d-block" height="18">
+            <g fill="currentColor">
+              <path d="M3.94,2A2,2,0,1,1,2,0,2,2,0,0,1,3.94,2ZM4,5.48H0V18H4Zm6.32,0H6.34V18h3.94V11.43c0-3.66,4.77-4,4.77,0V18H19V10.07c0-6.17-7.06-5.94-8.72-2.91Z"></path>
+            </g>
+          </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/github" data-ga-click="Footer, go to github&#39;s org, text:github" style="color: #959da5;"><svg height="20" class="octicon octicon-mark-github d-block" alt="GitHub" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>
+        </li>
+      </ul>
+      <ul class="list-style-none d-flex text-gray">
+        <li class="mr-3">© 2018 GitHub, Inc.</li>
+        <li class="mr-3"><a href="https://help.github.com/articles/github-terms-of-service/" data-ga-click="Footer, go to terms, text:terms" class="link-gray">Terms</a></li>
+        <li><a href="https://help.github.com/articles/github-privacy-statement/" data-ga-click="Footer, go to privacy, text:privacy" class="link-gray">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+    <script src="./How to undo (almost) anything with Git _ The GitHub Blog_files/blog.js.download"></script>
+  
+
+</body></html>
