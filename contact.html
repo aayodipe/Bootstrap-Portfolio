@@ -1,71 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+     <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-     <title>My Basic Portfolio</title>
-    
 </head>
 
 <body>
-     <!--  The beginning of the wrapper -->
-     <div class="wrapper">
-          <header class="main">
+                             <!-- Navigation div -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top pb-0 pt-0 bg-white">
+                              <!--  Container's div for navs item -->
+          <div class="container">
+                               <!-- Collapse button -->
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+               </button>
+                                         <!-- Nav brand -->
+               <a class="navbar-brand h-5 text-white text-center pt-4 pl-2 pr-2 " href="#">Adeyemi O. Ayodipe</span></a>
+                               <!-- Collapse Items starts here -->
+               <div class="collapse navbar-collapse " id="navbarToggler">
+                    <ul class="navbar-nav ml-auto mt-4 mt-lg-0 font-weight-bold ">
+                         <li class="nav-item active">
+                              <a class="nav-link btn btn-outline-info" href="index.html">About <span class="sr-only">(current)</span></a>
+                         </li>
+                         <li class="nav-item ml-1 mr-1  ">
+                              <a class="nav-link btn btn-outline-info" href="portfolio.html">Galary</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link btn btn-outline-info" href="contact.html">Contact</a>
+                         </li>
+                    </ul>
 
-               <div id="myName"><strong>Adeyemi O. Ayodipe</strong></div>
-               <!-- linking with nav section begins-->
-               <nav class="clear">
-                    <ol>
-                         <li><a href="index.html">About</a></li>
-                         <li>|</li>
-                         <li><a href="portfolio.html">Galary</a></li>
-                         <li>|</li>
-                         <li><a href="contact.html">Contact</a></li>
-                    </ol>
-               </nav>
-               <!-- linking with nav section ends-->
-          </header>
-          <section class="mainSection clear">
-               <header class="subHeader">
-                    <div class="pageName"><strong>Contact </strong> </div>
+               </div>
+                                                <!-- Collapse Items ends here -->
+     </nav>
+                                   
+     </div> 
+                                               <!-- Navigations container ends here -->
 
-                    <hr><br>
-               </header>
-               <!-- THE FORM  BEGINS-->
-               <form>
-                         <div class="form-group">
-                           <label for="NameControlInput">Name</label>
-                           <input type="email" class="form-control" id="NameControlInput" placeholder="Your Name here">
-                         </div>
-                         <div class="form-group">
-                                   <label for="EmaiControlInput">Email address</label>
-                                   <input type="email" class="form-control" id="EmaiControlInput" placeholder="name@example.com">
-                                 </div>
-                        
-                        
-                         <div class="form-group">
-                           <label for="FormControlTextarea">Message</label>
-                           <textarea class="form-control" id="FormControlTextarea" rows="3"></textarea>
-                         </div>
-                       </form>
-               <!-- THE FORM ENDS -->
-          </section>
-          <footer>&copy;2018
-               <div class="media">
-                    <a href="https://github.com/aayodipe/Basic-Portfolio"><i class="fab fa-git"></i></a>
-                    <a href="https://www.linkedin.com/mynetwork/"><i class="fab fa-linkedin"></i></a>
-                     <a href="aayodipe.skype.com"><i class="fab fa-slack"></i></a>
-                     <a href="mailto:ayodipeadeyemi@gmail.com"><i class="fab fa-google-plus"></i></a>
-                     
-                </div>
-          </footer>
+                                      <!-- Container for Section starts here -->
+<section class="container bg-white ">
+     <div class="row mt-5 ">
+          <div class="col-12 text-left text-lightgreen h3 text-bold pt-3 pb-1">About Me
+               <hr>
+          </div>
+     </div>
+     <!-- THE FORM  BEGINS-->
+     <form>
+          <div class="form-group">
+                         <label for="name"><strong>Name:</strong></label>
+                         <input type="text" class="form-control w-75" id="Name" placeholder="Your Name Please">
+          </div>
+          <div class="form-group">
+                    <label for="name"><strong>Email:</strong></label>
+                    <input type="email" class="form-control w-75" id="email" placeholder="yourname@mail.com">
+          </div>
+          <div class="form-group">
+                    <label for="message"><strong>Message:</strong></label>
+                    <br>
+                    <textarea  class="form-control w-75"rows="10" cols="80" id="textarea" placeholder="Give your positive feedback or constructive criticism"></textarea><br>
+                    <br>
+                    <input type="button" class="btn btn-success mb-5" id="button" value="Submit"><br>
+
+          </div>
+         
+          </form>
+     </section>
+          <!-- THE FORM ENDS -->
+
+                                    
+                                          <!-- footers start here -->
+          <div class="container">
+                    <footer class="row text-white bg-dark height">
+                    <div class="col-6 text-center align-self-center">&copy;2018</div>
+                              <div class="col-6 text-center align-self-center">
+                                   <a href="https://github.com/aayodipe/Basic-Portfolio"><i class="fab fa-git mr-2"></i></a>
+                                   <a href="https://www.linkedin.com/mynetwork/"><i class="fab fa-linkedin mr-2"></i></a>
+                                    <a href="aayodipe.skype.com"><i class="fab fa-slack mr-2"></i></a>
+                                    <a href="mailto:ayodipeadeyemi@gmail.com"><i class="fab fa-google-plus "></i></a>
+                                    
+                               </div>
+                    </div>
+                         </footer>
+          </div>                                            <!-- footer ends -->
+                                                    <!-- footer ends -->
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
      crossorigin="anonymous"></script>
@@ -73,6 +98,5 @@
      crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
      crossorigin="anonymous"></script>
-
 
 </html>

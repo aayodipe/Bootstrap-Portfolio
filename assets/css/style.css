@@ -1,17 +1,12 @@
 body{
      background-image: url("../images/cork-wallet.png")
 }
-hr{
+ hr{
     border: 2px solid gray;
   
     width: 100%;
-    margin: 0 auto;
-    position: relative;
-    top:17px;
-}
-.container{
-     width:980px;
-}
+    margin: 15px auto;
+ }
 .text-lightgreen{
      color:#4aaaa5
 }
@@ -29,8 +24,20 @@ font-size:35px;
      background-color: #4aaaa5;
      /* text-align:center; */
      margin:0;
-     /* padding:20px 16px; */
+    
      font-size:2rem;
      
 }a{
      color:#777777
+}
+.height{
+     height:100px;
+}
+.btn-success{ 
+     background-color: #4aaaa5;
+
+}
+
+footer a{
+     color:white;
+}
