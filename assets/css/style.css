@@ -2,16 +2,37 @@ body{
      background-image: url("../images/cork-wallet.png")
 }
  hr{
-    border: 2px solid gray;
-  
+    border: 2px solid gray;  
     width: 100%;
     margin: 15px auto;
  }
+
+ img{
+     width:200px;
+     height:200px;
+}
+
+ @media screen and (max-width: 580px){
+     img{
+          width:340px;
+          height:400px;
+     }
+.col-12 p{
+          margin-bottom:50px;
+          margin-top:5px;
+          text-align:center;
+          font-weight: bold
+     }
+
+
+}
+
+ 
 .text-lightgreen{
      color:#4aaaa5
 }
 .text-bold{
-font-size:35px;
+font-size:30px;
 }
 .text-size{
      font-size:180%;
@@ -19,7 +40,7 @@ font-size:35px;
 
 .h-5{
      height:100px;
-     width:320px;
+     width:290px;
      /* font-size:1em */
      background-color: #4aaaa5;
      /* text-align:center; */
